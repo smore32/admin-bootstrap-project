@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import OAuth from "../OAuth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { db } from "../../firebase";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -10,12 +19,42 @@ function Register() {
   });
 
   const { name, email, password } = formData;
+  const navigate = useNavigate();
+
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
   }
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+      const user = userCredentials.user;
+      //console.log(user, "this is user detaails");
+      const formDataCopy = { ...formData };
+      //delete password user entry...bcoz password already save in firebase authentication
+      delete formDataCopy.password;
+      formDataCopy.timeStamp = serverTimestamp();
+      await setDoc(doc(db, "users", user.uid), formDataCopy);
+      toast.sucess("Sign up was Successfully.");
+      navigate("/");
+    } catch (error) {
+      //console.log(error, "this is catch error");
+      toast.error("Something went wrong with the registration.");
+    }
+  }
+
   return (
     <>
       <div class="container">
@@ -30,7 +69,7 @@ function Register() {
                       <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Register</h1>
                       </div>
-                      <form class="user">
+                      <form class="user" onSubmit={onSubmit}>
                         <div class="form-group">
                           <input
                             name="name"
