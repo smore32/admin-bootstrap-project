@@ -48,7 +48,7 @@ function Register() {
       formDataCopy.timeStamp = serverTimestamp();
       await setDoc(doc(db, "users", user.uid), formDataCopy);
       toast.sucess("Sign up was Successfully.");
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       //console.log(error, "this is catch error");
       toast.error("Something went wrong with the registration.");
