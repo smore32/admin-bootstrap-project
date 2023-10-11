@@ -7,20 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <>
-      {" "}
       <div className="App">
         <Routing />
-        {/*<button onClick={() => {
-          dispatch(increment())
-        }}
-        className="me-2 btn btn-primary"
-      > Increment </button>
-
-        <button onClick={() => {
-          dispatch(decrement())
-        }}
-        className="me-2 btn btn-primary"
-      > Decrement </button>*/}
       </div>
       <ToastContainer
         position="top-right"
