@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { SiAirbrakedotio } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [style, setStyle] = useState(
@@ -32,25 +34,24 @@ const Sidebar = () => {
       {/*<!-- Sidebar -->*/}
       <ul className={style} id="accordionSidebar">
         {/* <!-- Sidebar - Brand --> */}
-        <a
+        <Link
           className="sidebar-brand d-flex align-items-center justify-content-center"
-          href="index.html"
+          to="/dashboard"
         >
-          <div className="sidebar-brand-icon rotate-n-15">
-            <i className="fas fa-laugh-wink"></i>
+          <div className="sidebar-brand-icon">
+            <SiAirbrakedotio />
           </div>
           <div className="sidebar-brand-text mx-3">Admin</div>
-        </a>
-
+        </Link>
         {/*<!-- Divider -->*/}
         <hr className="sidebar-divider my-0" />
 
         {/*<!-- Nav Item - Dashboard -->*/}
         <li className="nav-item active">
-          <a className="nav-link" href="index.html">
+          <Link className="nav-link" to="/dashboard">
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
-          </a>
+          </Link>
         </li>
 
         {/*<!-- Divider -->*/}
@@ -65,27 +66,23 @@ const Sidebar = () => {
             className="nav-link collapsed"
             href="#"
             data-toggle="collapse"
-            data-target="#collapseTwo"
+            data-target="#sub-admin"
             aria-expanded="true"
             aria-controls="collapseTwo"
           >
-            <i className="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+            <i class="fas fa-solid fa-user-secret"></i>
+            <span>Sub Admin</span>
           </a>
           <div
-            id="collapseTwo"
+            id="sub-admin"
             className="collapse"
             aria-labelledby="headingTwo"
             data-parent="#accordionSidebar"
           >
             <div className="bg-white py-2 collapse-inner rounded">
-              <h6 className="collapse-header">Custom Components:</h6>
-              <a className="collapse-item" href="buttons.html">
-                Buttons
-              </a>
-              <a className="collapse-item" href="cards.html">
-                Cards
-              </a>
+              <Link className="collapse-item" to="/sub-admin-list">
+                Sub-Admin List
+              </Link>
             </div>
           </div>
         </li>
@@ -96,103 +93,56 @@ const Sidebar = () => {
             className="nav-link collapsed"
             href="#"
             data-toggle="collapse"
-            data-target="#collapseUtilities"
+            data-target="#users"
             aria-expanded="true"
             aria-controls="collapseUtilities"
           >
-            <i className="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+            <i class="fas fa-solid fa-user"></i>
+            <span>Users</span>
           </a>
           <div
-            id="collapseUtilities"
+            id="users"
             className="collapse"
             aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar"
           >
             <div className="bg-white py-2 collapse-inner rounded">
-              <h6 className="collapse-header">Custom Utilities:</h6>
-              <a className="collapse-item" href="utilities-color.html">
-                Colors
-              </a>
-              <a className="collapse-item" href="utilities-border.html">
-                Borders
-              </a>
-              <a className="collapse-item" href="utilities-animation.html">
-                Animations
-              </a>
-              <a className="collapse-item" href="utilities-other.html">
-                Other
-              </a>
+              <Link className="collapse-item" to="/users-list">
+                Users List
+              </Link>
+            </div>
+          </div>
+        </li>
+
+        {/*<!-- Nav Item - Utilities Collapse Menu -->*/}
+        <li className="nav-item">
+          <a
+            className="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#transaction"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-regular fa-hospital-user"></i>
+            <span>Transactions</span>
+          </a>
+          <div
+            id="transaction"
+            className="collapse"
+            aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar"
+          >
+            <div className="bg-white py-2 collapse-inner rounded">
+              <Link className="collapse-item" to="/all-transaction">
+                All Transaction
+              </Link>
             </div>
           </div>
         </li>
 
         {/*<!-- Divider -->*/}
         <hr className="sidebar-divider" />
-
-        {/*<!-- Heading -->*/}
-        <div className="sidebar-heading">Addons</div>
-
-        {/*<!-- Nav Item - Pages Collapse Menu -->*/}
-        <li className="nav-item">
-          <a
-            className="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapsePages"
-            aria-expanded="true"
-            aria-controls="collapsePages"
-          >
-            <i className="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
-          </a>
-          <div
-            id="collapsePages"
-            className="collapse"
-            aria-labelledby="headingPages"
-            data-parent="#accordionSidebar"
-          >
-            <div className="bg-white py-2 collapse-inner rounded">
-              <h6 className="collapse-header">Login Screens:</h6>
-              <a className="collapse-item" href="login.html">
-                Login
-              </a>
-              <a className="collapse-item" href="register.html">
-                Register
-              </a>
-              <a className="collapse-item" href="forgot-password.html">
-                Forgot Password
-              </a>
-              <div className="collapse-divider"></div>
-              <h6 className="collapse-header">Other Pages:</h6>
-              <a className="collapse-item" href="404.html">
-                404 Page
-              </a>
-              <a className="collapse-item" href="blank.html">
-                Blank Page
-              </a>
-            </div>
-          </div>
-        </li>
-
-        {/*<!-- Nav Item - Charts -->*/}
-        <li className="nav-item">
-          <a className="nav-link" href="charts.html">
-            <i className="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span>
-          </a>
-        </li>
-
-        {/*<!-- Nav Item - Tables -->*/}
-        <li className="nav-item">
-          <a className="nav-link" href="tables.html">
-            <i className="fas fa-fw fa-table"></i>
-            <span>Tables</span>
-          </a>
-        </li>
-
-        {/*<!-- Divider -->*/}
-        <hr className="sidebar-divider d-none d-md-block" />
 
         {/*<!-- Sidebar Toggler (Sidebar) -->*/}
         <div className="text-center d-none d-md-inline">
