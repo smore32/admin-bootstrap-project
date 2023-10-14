@@ -83,6 +83,9 @@ const Sidebar = () => {
               <Link className="collapse-item" to="/sub-admin-list">
                 Sub-Admin List
               </Link>
+              <Link className="collapse-item" to="/add-sub-admin">
+                Add Sub-Admin
+              </Link>
             </div>
           </div>
         </li>
@@ -109,6 +112,9 @@ const Sidebar = () => {
             <div className="bg-white py-2 collapse-inner rounded">
               <Link className="collapse-item" to="/users-list">
                 Users List
+              </Link>
+              <Link className="collapse-item" to="/add-new-user">
+                Add New User
               </Link>
             </div>
           </div>

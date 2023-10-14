@@ -25,7 +25,7 @@ export const Routing = () => {
           <Route path="/add-sub-admin" element={<AddSubAdmin />} />
 
           <Route path="/users-list" element={<UsersList />} />
-          <Route path="/add-list" element={<AddUser />} />
+          <Route path="/add-new-user" element={<AddUser />} />
 
           <Route path="/all-transaction" element={<AllTransaction />} />
         </Routes>
